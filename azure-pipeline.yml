@@ -22,6 +22,6 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az storage blob upload-batch -d '$web' -s $(Build.ArtifactStagingDirectory)/your-build-output-dir --account-name biddybot-fe
+      az storage blob upload-batch -d '$web' -s $(Build.ArtifactStagingDirectory)/build --account-name biddybot-fe
     workingDirectory: '$(Build.SourcesDirectory)'
   displayName: 'Upload files to Azure Storage'
