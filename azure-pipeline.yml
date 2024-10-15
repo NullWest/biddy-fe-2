@@ -1,0 +1,27 @@
+# azure-pipelines.yml
+trigger:
+- main # or another branch you use
+
+pool:
+  vmImage: 'ubuntu-latest' # or another image if you prefer
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.11.1
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build 
+  displayName: 'Build biddy site'
+
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '39a22041-b555-4a50-8b41-018948ce2b29'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az storage blob upload-batch -d '$web' -s $(Build.ArtifactStagingDirectory)/your-build-output-dir --account-name biddybot-fe
+    workingDirectory: '$(Build.SourcesDirectory)'
+  displayName: 'Upload files to Azure Storage'
