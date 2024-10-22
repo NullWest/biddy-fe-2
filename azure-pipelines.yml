@@ -16,7 +16,7 @@ steps:
   inputs:
     versionSpec: '20.x'
     app_location: '/src'
-    output_location: '/src'
+    output_location: '/build'
     azure_static_web_apps_api_token: ${deployment_token}
   displayName: 'Install Node.js'
 

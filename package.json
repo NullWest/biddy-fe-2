@@ -18,7 +18,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+      "start": "react-scripts start",
+      "build": "react-scripts build",
     "build-css": "tailwindcss build -i ./src/input.css -o ./public/output.css",
     "watch-css": "tailwindcss build -i ./src/input.css -o ./public/output.css --watch",
     "dev": "concurrently \"npm run watch-css\" \"npm start\""
